@@ -34,9 +34,11 @@ Patients can interact with the AI assistant through voice in real time.
 
 Supports three languages:
 
-• English
-• Hindi
-• Tamil
+| Language | Script Example                                    |
+| -------- | ------------------------------------------------- |
+| English  | "Book appointment with cardiologist"              |
+| Hindi    | "मुझे कल डॉक्टर से मिलना है"                      |
+| Tamil    | "நாளை மருத்துவரை பார்க்க வேண்டும்"               |
 
 The system automatically detects the language and responds accordingly.
 
@@ -66,23 +68,25 @@ Doctor preference
 
 The voice pipeline follows this architecture:
 
-User Voice
-↓
+```
+User Speech
+     ↓
 Speech-to-Text (STT)
-↓
+     ↓
 Language Detection
-↓
-AI Agent Reasoning
-↓
+     ↓
+AI Agent (LLM)
+     ↓
 Tool Orchestration
-↓
-Appointment Scheduler
-↓
+     ↓
+Appointment Service
+     ↓
 Text Response
-↓
+     ↓
 Text-to-Speech (TTS)
-↓
+     ↓
 Audio Response
+```
 
 ---
 
@@ -103,7 +107,7 @@ Audio Response
 
 # Project Structure
 
-
+```
 voice-ai-agent
 │
 ├── backend
@@ -130,13 +134,12 @@ voice-ai-agent
 │
 ├── frontend
 │   └── index.html
-|
+│
 ├── database
 │   └── db.py
-|
+│
 └── docs
-
-
+```
 ---
 
 # Setup Instructions
