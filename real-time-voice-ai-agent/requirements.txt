@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+redis
+openai
+whisper
+langdetect
+pydantic
+websockets
+python-multipart
+
+
+
+
+

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Voice AI Agent</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<h1>Real-Time Multilingual Voice AI Agent</h1>
+<h2>Clinical Appointment Booking System</h2>
+<p>Click the button and speak to manage your appointment.</p>
+
+<button onclick="startRecording()">Start Talking</button>
+<button onclick="stopRecording()">Stop</button>
+
+<script>
+
+let ws = new WebSocket("ws://localhost:8000/voice")
+let recorder
+let stream
+
+async function startRecording() {
+
+    stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+
+    recorder = new MediaRecorder(stream)
+
+    recorder.ondataavailable = function(event) {
+        if (ws.readyState === WebSocket.OPEN) {
+            ws.send(event.data)
+        }
+    }
+
+    recorder.start(1000)
+}
+
+function stopRecording() {
+
+    if (recorder) {
+        recorder.stop()
+    }
+
+    if (stream) {
+        stream.getTracks().forEach(track => track.stop())
+    }
+}
+
+ws.onmessage = function(event) {
+
+    const audioBlob = new Blob([event.data], { type: "audio/mp3" })
+    const audioUrl = URL.createObjectURL(audioBlob)
+
+    const audio = new Audio(audioUrl)
+    audio.play()
+}
+
+</script>
+
+</body>
+</html>
