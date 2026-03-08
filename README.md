@@ -15,9 +15,13 @@ The system accepts **voice input**, understands user intent using AI, manages ap
 This project implements a **real-time AI voice assistant** capable of managing the complete appointment lifecycle:
 
 • Book appointments
+
 • Cancel appointments
+
 • Reschedule appointments
+
 • Check doctor availability
+
 • Suggest alternative time slots
 
 The assistant supports **multilingual voice interaction** and maintains conversation context to provide a natural user experience.
@@ -254,8 +258,11 @@ Agent:
 # Known Limitations
 
 • Basic rule-based intent recognition (can be improved with full LLM integration)
+
 • Simplified scheduling engine
+
 • Limited persistent storage implementation
+
 • Whisper model may increase initial loading time
 
 ---
@@ -263,10 +270,15 @@ Agent:
 # Future Improvements
 
 • Streaming speech recognition
+
 • Advanced LLM tool calling
+
 • Cloud deployment with Docker
+
 • Horizontal scalability
+
 • Background job queues for outbound campaigns
+
 • Improved multilingual NLP
 
 ---
